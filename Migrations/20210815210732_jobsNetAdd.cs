@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace jobs_net.Migrations
 {
-    public partial class UsuarioAdd : Migration
+    public partial class jobsNetAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +18,7 @@ namespace jobs_net.Migrations
                     numero = table.Column<int>(type: "int", nullable: false),
                     bairro = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
                     cidade = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
+                    estado = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false),
                     pais = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
                 },
                 constraints: table =>
@@ -34,11 +36,14 @@ namespace jobs_net.Migrations
                     cpf = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
                     rg = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
                     genero = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: true),
+                    nascimento = table.Column<DateTime>(type: "date", nullable: false),
                     telefone = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: true),
                     telefone2 = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: true),
                     email = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
                     profissao = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true),
-                    estadoCivil = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
+                    estadoCivil = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true),
+                    possuiVeiculo = table.Column<string>(type: "varchar", nullable: true),
+                    possuiHabilitacao = table.Column<string>(type: "varchar", nullable: true)
                 },
                 constraints: table =>
                 {
