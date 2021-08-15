@@ -27,7 +27,8 @@ namespace jobs_net.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        //public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil")] Usuario usuario)
         {
             _context.Add(usuario);
             await _context.SaveChangesAsync();
@@ -35,7 +36,8 @@ namespace jobs_net.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil")] Usuario usuario)
         {
             if (id != usuario.Id)
             {

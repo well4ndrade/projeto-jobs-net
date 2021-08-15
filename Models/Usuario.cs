@@ -40,9 +40,9 @@ namespace jobs_net.Models
 
     //ATULIZADO:
 
-    // [Column("dataNascimento", TypeName = "dbdate")]
+    // [Column("nascimento", TypeName = "date")]
     // [Required]
-    // public string DataNascimento { get;set; }
+    // public string Nascimento { get;set; }
 
     [Column("telefone", TypeName = "varchar")]
     [MaxLength(15)]

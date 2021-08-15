@@ -9,7 +9,7 @@ using jobs_net.Servicos;
 namespace jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210815021949_UsuarioAdd")]
+    [Migration("20210815090013_UsuarioAdd")]
     partial class UsuarioAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
