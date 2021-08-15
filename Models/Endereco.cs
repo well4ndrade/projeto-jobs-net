@@ -37,10 +37,20 @@ namespace jobs_net.Models
     [MaxLength(150)]
     public string Cidade { get;set; }
 
+    [Column("estado", TypeName = "varchar")]
+    [Required]
+    [MaxLength(2)]
+    public string Estado { get;set; }
+
     [Column("pais", TypeName = "varchar")]
     [Required]
     [MaxLength(150)]
     public string Pais { get;set; }
 
-  }
+    [Column("usuario_id")]
+    [Required]
+    [ForeignKey("UsuarioId")]
+    public int UsuarioId { get; set; }
+    public Usuario Usuario { get; set; }
+}
 }

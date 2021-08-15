@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,9 +42,9 @@ namespace jobs_net.Models
 
     //ATULIZADO:
 
-    // [Column("nascimento", TypeName = "date")]
-    // [Required]
-    // public string Nascimento { get;set; }
+    [Column("nascimento", TypeName = "date")]
+    [Required]
+    public DateTime Nascimento { get;set; }
 
     [Column("telefone", TypeName = "varchar")]
     [MaxLength(15)]
@@ -65,10 +67,12 @@ namespace jobs_net.Models
     [MaxLength(150)]
     public string EstadoCivil { get;set; }
 
-    // [Column("possuiVeiculo", TypeName = "boolean")]
-    // public string PossuiVeiculo { get;set; }
+    [Column("possuiVeiculo", TypeName = "varchar")]
+    public string PossuiVeiculo { get;set; }
 
-    // [Column("possuiHabilitacao", TypeName = "boolean")]
-    // public string PossuiHabilitacao { get;set; }
+    [Column("possuiHabilitacao", TypeName = "varchar")]
+    public string PossuiHabilitacao { get;set; }
+
+    public ICollection<Endereco> Endereco { get; set; }
   }
 }

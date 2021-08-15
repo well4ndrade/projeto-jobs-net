@@ -19,16 +19,16 @@
 
 # Componentes instalados:
 ``` bash
-  dotnet add package Microsoft.EntityFrameworkCore --version 5.0.9
-  dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.9
-  dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.9
+  dotnet add package Microsoft.EntityFrameworkCore --version 5.0.2
+  dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.2
+  dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.2
   dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.0.2
 ```
 
 # Comandos para migração:
 ``` bash
 dotnet tool install --global dotnet-ef
-dotnet ef migrations add UsuarioAdd
+dotnet ef migrations add jobsAdd
 dotnet ef database update
 ```
 
