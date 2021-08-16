@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using jobs_net.Models;
-using jobs_net.Servicos;
+using projeto_jobs_net.Models;
+using projeto_jobs_net.Servicos;
 
-namespace jobs_net.Controllers
+namespace projeto_jobs_net.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -27,8 +27,7 @@ namespace jobs_net.Controllers
         }
 
         [HttpPost]
-        //public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
-        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         {
             _context.Add(usuario);
             await _context.SaveChangesAsync();
@@ -36,8 +35,7 @@ namespace jobs_net.Controllers
         }
 
         [HttpPut]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         {
             if (id != usuario.Id)
             {

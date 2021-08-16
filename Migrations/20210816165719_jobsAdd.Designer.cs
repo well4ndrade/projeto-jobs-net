@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using jobs_net.Servicos;
+using projeto_jobs_net.Servicos;
 
-namespace jobs_net.Migrations
+namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210815210732_jobsNetAdd")]
-    partial class jobsNetAdd
+    [Migration("20210816165719_jobsAdd")]
+    partial class jobsAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace jobs_net.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,12 +69,18 @@ namespace jobs_net.Migrations
                         .HasColumnType("varchar(150)")
                         .HasColumnName("pais");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int")
+                        .HasColumnName("usuario_id");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("enderecos");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -148,7 +154,7 @@ namespace jobs_net.Migrations
                     b.ToTable("usuarios");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Vaga", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Vaga", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,6 +176,22 @@ namespace jobs_net.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("vagas");
+                });
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
+                {
+                    b.HasOne("projeto_jobs_net.Models.Usuario", "Usuario")
+                        .WithMany("Endereco")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
+                {
+                    b.Navigation("Endereco");
                 });
 #pragma warning restore 612, 618
         }

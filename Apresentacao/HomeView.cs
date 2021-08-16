@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace jobs_net.Apresentacao
+namespace projeto_jobs_net.Apresentacao
 {
     public class HomeView
     {

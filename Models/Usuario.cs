@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace jobs_net.Models
+namespace projeto_jobs_net.Models
 {
   [Table("usuarios")]
   public class Usuario
@@ -30,17 +30,6 @@ namespace jobs_net.Models
     [Column("genero", TypeName = "varchar")]
     [MaxLength(15)]
     public string Genero { get;set; }
-
-    // PROBLEMAS AO TENTAR EXECUTAR MIGRAÇÃO: "The property 'Usuario.DataNascimento' could not be mapped because it is of type 'string', 
-    // which is not a supported primitive type or a valid entity type." 
-
-    //ANTES ESTAVA:
-
-    // [Column("dataNascimento", TypeName = "datetime")]
-    // [Required]
-    // public string DataNascimento { get;set; }
-
-    //ATULIZADO:
 
     [Column("nascimento", TypeName = "date")]
     [Required]

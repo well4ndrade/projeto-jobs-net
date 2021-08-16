@@ -1,7 +1,7 @@
-using jobs_net.Models;
+using projeto_jobs_net.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace jobs_net.Servicos
+namespace projeto_jobs_net.Servicos
 {
   public class DbContexto : DbContext
   {

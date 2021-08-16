@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace jobs_net.Models
+namespace projeto_jobs_net.Models
 {
   [Table("enderecos")]
   public class Endereco
@@ -10,8 +10,6 @@ namespace jobs_net.Models
     [Key]
     [Column("id")]
     public int Id { get;set; }
-
-    //APRESENTANDO ERRO QUANTO A STRING NO CEP: Coluna, parâmetro ou variável #2: não é possível encontrar o tipo de dados string.
 
     [Column("cep", TypeName = "varchar")]
     [Required]

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using jobs_net.Models;
-using jobs_net.Servicos;
+using projeto_jobs_net.Models;
+using projeto_jobs_net.Servicos;
 
-namespace jobs_net.Controllers
+namespace projeto_jobs_net.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -27,7 +27,6 @@ namespace jobs_net.Controllers
         }
 
         [HttpPost]
-        //public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         {
             _context.Add(endereco);
@@ -36,7 +35,6 @@ namespace jobs_net.Controllers
         }
 
         [HttpPut]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         {
             if (id != endereco.Id)

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "jobs_net": {
+    "projeto_jobs_net": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
