@@ -14,8 +14,8 @@ namespace jobs_net.Apresentacao
             get{ return new List<string>()
             {
                 "/Enderecos",
-                "Usuarios",
-                "Vagas"
+                "/Usuarios",
+                "/Vagas"
             };
             }
         }

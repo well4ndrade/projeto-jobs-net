@@ -8,7 +8,7 @@ using jobs_net.Servicos;
 namespace jobs_net.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    
     public class VagasController : ControllerBase
     {
         private readonly DbContexto _context;
@@ -17,13 +17,15 @@ namespace jobs_net.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
+        [Route("/Vagas")]
         public async Task<IActionResult> Index()
         {
             return StatusCode(200, await _context.Vagas.ToListAsync());
         }
 
         [HttpPost]
+        [Route("/Vagas")]
         public async Task<IActionResult> Create([Bind("Id,Nome,descricao")] Vaga vaga)
         {
             _context.Add(vaga);
@@ -32,6 +34,7 @@ namespace jobs_net.Controllers
         }
 
         [HttpPut]
+        [Route("/Vagas/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,descricao")] Vaga vaga)
         {
             if (id != vaga.Id)
@@ -59,7 +62,8 @@ namespace jobs_net.Controllers
         }
 
         [HttpDelete, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [Route("/Vagas/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var vaga = await _context.Vagas.FindAsync(id);
             _context.Vagas.Remove(vaga);

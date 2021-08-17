@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace jobs_net.Models
 {
@@ -48,11 +48,7 @@ namespace jobs_net.Models
     [MaxLength(150)]
     public string Pais { get;set; }
 
-    [Column("usuario_id")]
-    [Required]
-    [ForeignKey("UsuarioId")]
-    public int UsuarioId { get; set; }
-    [JsonIgnore]
-    public Usuario Usuario { get; set; }
+    public ICollection<Usuario> Usuario { get; set; }
+
 }
 }

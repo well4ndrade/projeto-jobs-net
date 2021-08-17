@@ -11,7 +11,6 @@ using jobs_net.Servicos;
 namespace jobs_net.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class UsuariosController : ControllerBase
     {
         private readonly DbContexto _context;
@@ -20,13 +19,16 @@ namespace jobs_net.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
+        [Route("/Usuarios")]
         public async Task<IActionResult> Index()
         {
             return StatusCode(200, await _context.Usuarios.ToListAsync());
         }
 
         [HttpPost]
+        [Route("/Usuarios")]
+
         //public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil")] Usuario usuario)
         {
@@ -36,6 +38,7 @@ namespace jobs_net.Controllers
         }
 
         [HttpPut]
+        [Route("/Usuarios/{id}")]
         //public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,DataNascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil")] Usuario usuario)
         {
@@ -62,8 +65,9 @@ namespace jobs_net.Controllers
             return StatusCode(200, usuario);
         }
 
-        [HttpDelete, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpDelete]
+        [Route("/Usuarios/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
             _context.Usuarios.Remove(usuario);

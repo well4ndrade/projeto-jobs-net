@@ -11,7 +11,6 @@ using jobs_net.Servicos;
 namespace jobs_net.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class EnderecosController : ControllerBase
     {
         private readonly DbContexto _context;
@@ -21,12 +20,15 @@ namespace jobs_net.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        [Route("/Enderecos")]
         public async Task<IActionResult> Index()
         {
             return StatusCode(200, await _context.Enderecos.ToListAsync());
         }
 
         [HttpPost]
+        [Route("/Enderecos")]
         //public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         {
@@ -36,6 +38,7 @@ namespace jobs_net.Controllers
         }
 
         [HttpPut]
+        [Route("/Enderecos/{id}")]
         //public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
         {
@@ -63,7 +66,8 @@ namespace jobs_net.Controllers
         }
 
         [HttpDelete, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [Route("/Enderecos/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var endereco = await _context.Enderecos.FindAsync(id);
             _context.Enderecos.Remove(endereco);
