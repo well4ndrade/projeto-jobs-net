@@ -36,7 +36,7 @@ namespace projeto_jobs_net.Controllers
         }
 
         [HttpPut]
-        [Route("/Usuarios/{id}")
+        [Route("/Usuarios/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
 
         {
