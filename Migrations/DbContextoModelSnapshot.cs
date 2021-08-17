@@ -98,6 +98,10 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("varchar(150)")
                         .HasColumnName("email");
 
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int")
+                        .HasColumnName("endereco_id");
+
                     b.Property<string>("EstadoCivil")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
@@ -149,6 +153,8 @@ namespace projeto_jobs_net.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EnderecoId");
+
                     b.ToTable("usuarios");
                 });
 
@@ -174,22 +180,6 @@ namespace projeto_jobs_net.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("vagas");
-                });
-
-            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
-                {
-                    b.HasOne("projeto_jobs_net.Models.Usuario", "Usuario")
-                        .WithMany("Endereco")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
-                {
-                    b.Navigation("Endereco");
                 });
 #pragma warning restore 612, 618
         }

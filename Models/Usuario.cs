@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace projeto_jobs_net.Models
 {
@@ -61,7 +61,12 @@ namespace projeto_jobs_net.Models
 
     [Column("possuiHabilitacao", TypeName = "varchar")]
     public string PossuiHabilitacao { get;set; }
-
-    public ICollection<Endereco> Endereco { get; set; }
+         
+    [Column("endereco_id")]
+    [Required]
+    [ForeignKey("EnderecoId")]
+    public int EnderecoId { get; set; }
+    [JsonIgnore]
+    public Endereco Endereco { get; set; }
   }
 }
