@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace jobs_net.Models
+namespace projeto_jobs_net.Models
 {
   [Table("vagas")]
   public class Vaga

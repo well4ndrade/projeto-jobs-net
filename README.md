@@ -12,7 +12,7 @@
   git commit -m "Iniciando projeto"
   code .gitignore # gerei o conteúdo para ignorar como (Windows, Linux, Mac, DotnetCore, VisualStudioCore) no link: https://www.toptal.com/developers/gitignore
   Criei o repositório e rodei os comandos
-  git remote add origin git@github.com:well4ndrade/projeto-jobs-net.git
+  git remote add origin git@github.com:well4ndrade/projeto-jobs-net.git 
   git branch -M main
   git push -u origin main
 ```
@@ -37,7 +37,7 @@ dotnet ef database update
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-# Gerando o scaffold de Usuarios
+# Gerando o scaffold de Usuarios, Enderços e Vagas
 ``` bash
 dotnet aspnet-codegenerator controller -name UsuariosController -m Usuario -dc DbContexto --relativeFolderPath Controllers 
 

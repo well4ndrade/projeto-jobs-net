@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using jobs_net.Servicos;
+using projeto_jobs_net.Servicos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace jobs_net
+namespace projeto_jobs_net
 {
     public class Startup
     {
@@ -33,7 +33,7 @@ namespace jobs_net
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "jobs_net", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "projeto_jobs_net", Version = "v1" });
             });
         }
 
@@ -44,7 +44,7 @@ namespace jobs_net
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "jobs_net v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "projeto_jobs_net v1"));
             }
 
             app.UseHttpsRedirection();

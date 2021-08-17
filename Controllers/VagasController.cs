@@ -2,10 +2,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using jobs_net.Models;
-using jobs_net.Servicos;
+using projeto_jobs_net.Models;
+using projeto_jobs_net.Servicos;
 
-namespace jobs_net.Controllers
+namespace projeto_jobs_net.Controllers
 {
     [ApiController]
     
