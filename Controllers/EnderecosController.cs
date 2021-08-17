@@ -63,8 +63,8 @@ namespace projeto_jobs_net.Controllers
             return StatusCode(200, endereco);
         }
 
-        [HttpDelete, ActionName("Delete")]
-        [Route("/Enderecos/{id}")]
+        [HttpDelete]
+        [Route("/enderecos/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var endereco = await _context.Enderecos.FindAsync(id);

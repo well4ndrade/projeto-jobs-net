@@ -61,8 +61,8 @@ namespace projeto_jobs_net.Controllers
             return StatusCode(200, vaga);
         }
 
-        [HttpDelete, ActionName("Delete")]
-        [Route("/Vagas/{id}")]
+        [HttpDelete]
+        [Route("/vagas/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var vaga = await _context.Vagas.FindAsync(id);
