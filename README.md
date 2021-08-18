@@ -47,3 +47,9 @@ dotnet aspnet-codegenerator controller -name VagasController -m Vaga -dc DbConte
 
 ```
 
+# Erro de certificados que ocorreu foi resolvido: (Executar na API e no MVC)
+``` bash
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+
+```
