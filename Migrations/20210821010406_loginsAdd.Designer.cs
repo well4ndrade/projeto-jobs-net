@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projeto_jobs_net.Servicos;
 
-namespace projeto_jobs_net.Migrations
+namespace jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210817172121_UsuarioAdd")]
-    partial class UsuarioAdd
+    [Migration("20210821010406_loginsAdd")]
+    partial class loginsAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace projeto_jobs_net.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,7 +74,32 @@ namespace projeto_jobs_net.Migrations
                     b.ToTable("enderecos");
                 });
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("jobs_net.Models.Login", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("senha")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)")
+                        .HasColumnName("passwd");
+
+                    b.Property<string>("usuario")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)")
+                        .HasColumnName("login");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("login");
+                });
+
+            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,7 +179,7 @@ namespace projeto_jobs_net.Migrations
                     b.ToTable("usuarios");
                 });
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Vaga", b =>
+            modelBuilder.Entity("jobs_net.Models.Vaga", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -178,9 +203,9 @@ namespace projeto_jobs_net.Migrations
                     b.ToTable("vagas");
                 });
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
                 {
-                    b.HasOne("projeto_jobs_net.Models.Endereco", "Endereco")
+                    b.HasOne("jobs_net.Models.Endereco", "Endereco")
                         .WithMany("Usuario")
                         .HasForeignKey("EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -189,7 +214,7 @@ namespace projeto_jobs_net.Migrations
                     b.Navigation("Endereco");
                 });
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
                 {
                     b.Navigation("Usuario");
                 });

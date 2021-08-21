@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace projeto_jobs_net.Migrations
+namespace jobs_net.Migrations
 {
-    public partial class UsuarioAdd : Migration
+    public partial class jobsAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
