@@ -13,11 +13,11 @@ namespace projeto_jobs_net.Models
     [Column("login", TypeName = "varchar")]
     [MaxLength(16)]
     [Required]
-    public string usuario { get;set; }
+    public string Usuario { get;set; }
 
     [Column("passwd", TypeName = "varchar")]
     [Required]
     [MaxLength(16)]  
-    public string senha { get;set; }
+    public string Senha { get;set; }
   }
 }

@@ -17,6 +17,14 @@ namespace projeto_jobs_net.Models
 
     [Column("descricao", TypeName = "text")]
     [Required]    
-    public string descricao { get;set; }
+    public string Descricao { get;set; }
+
+    [Column("local", TypeName = "text")]
+    [Required]   
+    public string Local { get;set; }
+
+    [Column("salario", TypeName = "float")]   
+    [Required]   
+    public float Salario { get;set; }
   }
 }

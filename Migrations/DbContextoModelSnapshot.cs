@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projeto_jobs_net.Servicos;
 
-namespace jobs_net.Migrations
+namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
     partial class DbContextoModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace jobs_net.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +72,7 @@ namespace jobs_net.Migrations
                     b.ToTable("enderecos");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Login", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Login", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,13 +80,13 @@ namespace jobs_net.Migrations
                         .HasColumnName("id")
                         .UseIdentityColumn();
 
-                    b.Property<string>("senha")
+                    b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(16)
                         .HasColumnType("varchar(16)")
                         .HasColumnName("passwd");
 
-                    b.Property<string>("usuario")
+                    b.Property<string>("Usuario")
                         .IsRequired()
                         .HasMaxLength(16)
                         .HasColumnType("varchar(16)")
@@ -97,7 +97,7 @@ namespace jobs_net.Migrations
                     b.ToTable("login");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,7 +177,7 @@ namespace jobs_net.Migrations
                     b.ToTable("usuarios");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Vaga", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Vaga", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,25 +185,34 @@ namespace jobs_net.Migrations
                         .HasColumnName("id")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("descricao");
+
+                    b.Property<string>("Local")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("local");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
                         .HasColumnName("nome");
 
-                    b.Property<string>("descricao")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("descricao");
+                    b.Property<double>("Salario")
+                        .HasColumnType("float")
+                        .HasColumnName("salario");
 
                     b.HasKey("Id");
 
                     b.ToTable("vagas");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
                 {
-                    b.HasOne("jobs_net.Models.Endereco", "Endereco")
+                    b.HasOne("projeto_jobs_net.Models.Endereco", "Endereco")
                         .WithMany("Usuario")
                         .HasForeignKey("EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -212,7 +221,7 @@ namespace jobs_net.Migrations
                     b.Navigation("Endereco");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
                     b.Navigation("Usuario");
                 });
