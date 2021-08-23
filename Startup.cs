@@ -34,7 +34,7 @@ namespace projeto_jobs_net
                      .AllowAnyMethod()
                     .AllowAnyHeader();
               }));
-
+          
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DbContexto>(options => options.UseSqlServer(connectionString));
             services.AddControllers();
