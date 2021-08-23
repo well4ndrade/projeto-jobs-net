@@ -19,7 +19,32 @@ namespace jobs_net.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Dado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("login");
+
+                    b.Property<string>("Passwd")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("passwd");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dados");
+                });
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,32 +97,7 @@ namespace jobs_net.Migrations
                     b.ToTable("enderecos");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("senha")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("passwd");
-
-                    b.Property<string>("usuario")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("login");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("login");
-                });
-
-            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,7 +177,7 @@ namespace jobs_net.Migrations
                     b.ToTable("usuarios");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Vaga", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Vaga", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,9 +201,9 @@ namespace jobs_net.Migrations
                     b.ToTable("vagas");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
                 {
-                    b.HasOne("jobs_net.Models.Endereco", "Endereco")
+                    b.HasOne("projeto_jobs_net.Models.Endereco", "Endereco")
                         .WithMany("Usuario")
                         .HasForeignKey("EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -212,7 +212,7 @@ namespace jobs_net.Migrations
                     b.Navigation("Endereco");
                 });
 
-            modelBuilder.Entity("jobs_net.Models.Endereco", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
                     b.Navigation("Usuario");
                 });

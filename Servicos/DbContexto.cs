@@ -10,7 +10,7 @@ namespace projeto_jobs_net.Servicos
     public DbSet<Endereco> Enderecos { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Vaga> Vagas { get; set; }
-    public DbSet<Login> Login { get; set; }
+    public DbSet<Dado> Dados { get; set; }
     
   }
 }
