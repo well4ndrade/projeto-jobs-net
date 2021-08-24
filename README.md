@@ -1,6 +1,6 @@
-<h1>Back-End Jobsnet</h1>🚀
+<h1>Back-End Jobsnet🚀</h1>
 
-🚀<h2> Equipe The First Of Us</h2>🚀
+<h2>🚀 Equipe The First Of Us🚀</h2>
 
 
 <h2>📌Comandos para rodar localmente 💻</h2>
