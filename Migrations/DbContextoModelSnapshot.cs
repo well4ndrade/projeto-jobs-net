@@ -3,23 +3,46 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projeto_jobs_net.Servicos;
 
 namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210822233424_JobsAdd")]
-    partial class JobsAdd
+    partial class DbContextoModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Dado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("login");
+
+                    b.Property<string>("Passwd")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("passwd");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dados");
+                });
 
             modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
@@ -63,40 +86,15 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("int")
                         .HasColumnName("numero");
 
-                    b.Property<string>("Pais")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("pais");
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int")
+                        .HasColumnName("usuario_id");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("enderecos");
-                });
-
-            modelBuilder.Entity("projeto_jobs_net.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("passwd");
-
-                    b.Property<string>("Usuario")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("login");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("login");
                 });
 
             modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
@@ -119,19 +117,10 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("varchar(150)")
                         .HasColumnName("email");
 
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int")
-                        .HasColumnName("endereco_id");
-
                     b.Property<string>("EstadoCivil")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
                         .HasColumnName("estadoCivil");
-
-                    b.Property<string>("Genero")
-                        .HasMaxLength(15)
-                        .HasColumnType("varchar(15)")
-                        .HasColumnName("genero");
 
                     b.Property<DateTime>("Nascimento")
                         .HasColumnType("date")
@@ -151,11 +140,6 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("possuiVeiculo");
 
-                    b.Property<string>("Profissao")
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("profissao");
-
                     b.Property<string>("Rg")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -173,8 +157,6 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnName("telefone2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EnderecoId");
 
                     b.ToTable("usuarios");
                 });
@@ -212,19 +194,14 @@ namespace projeto_jobs_net.Migrations
                     b.ToTable("vagas");
                 });
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
+            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
-                    b.HasOne("projeto_jobs_net.Models.Endereco", "Endereco")
-                        .WithMany("Usuario")
-                        .HasForeignKey("EnderecoId")
+                    b.HasOne("projeto_jobs_net.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Endereco");
-                });
-
-            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
-                {
                     b.Navigation("Usuario");
                 });
 #pragma warning restore 612, 618

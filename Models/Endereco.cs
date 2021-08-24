@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace projeto_jobs_net.Models
 {
@@ -41,12 +42,13 @@ namespace projeto_jobs_net.Models
     [MaxLength(2)]
     public string Estado { get;set; }
 
-    [Column("pais", TypeName = "varchar")]
+    [Column("usuario_id")]
     [Required]
-    [MaxLength(150)]
-    public string Pais { get;set; }
-
-    public ICollection<Usuario> Usuario { get; set; }
+    [ForeignKey("UsuarioId")]
+    public int UsuarioId { get; set; }
+    [JsonIgnore]
+    public Usuario Usuario { get; set; }
+    
 
 }
 }

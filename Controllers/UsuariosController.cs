@@ -28,7 +28,7 @@ namespace projeto_jobs_net.Controllers
 
         [HttpPost]
         [Route("/Usuarios")]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Nascimento,Telefone,Telefone2,Email,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         {
             _context.Add(usuario);
             await _context.SaveChangesAsync();
@@ -37,7 +37,7 @@ namespace projeto_jobs_net.Controllers
 
         [HttpPut]
         [Route("/Usuarios/{id}")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Nascimento,Telefone,Telefone2,Email,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
 
         {
             if (id != usuario.Id)

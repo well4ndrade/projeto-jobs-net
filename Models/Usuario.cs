@@ -27,10 +27,6 @@ namespace projeto_jobs_net.Models
     [MaxLength(15)]
     public string Rg { get;set; }
 
-    [Column("genero", TypeName = "varchar")]
-    [MaxLength(15)]
-    public string Genero { get;set; }
-
     [Column("nascimento", TypeName = "date")]
     [Required]
     public DateTime Nascimento { get;set; }
@@ -48,9 +44,6 @@ namespace projeto_jobs_net.Models
     [MaxLength(150)]
     public string Email { get;set; }
 
-    [Column("profissao", TypeName = "varchar")]
-    [MaxLength(150)]
-    public string Profissao { get;set; }
 
     [Column("estadoCivil", TypeName = "varchar")]
     [MaxLength(150)]
@@ -61,12 +54,6 @@ namespace projeto_jobs_net.Models
 
     [Column("possuiHabilitacao", TypeName = "varchar")]
     public string PossuiHabilitacao { get;set; }
-         
-    [Column("endereco_id")]
-    [Required]
-    [ForeignKey("EnderecoId")]
-    public int EnderecoId { get; set; }
-    [JsonIgnore]
-    public Endereco Endereco { get; set; }
+           
   }
 }
