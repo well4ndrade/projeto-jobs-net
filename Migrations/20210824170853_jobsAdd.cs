@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace projeto_jobs_net.Migrations
 {
-    public partial class CriaBanco : Migration
+    public partial class jobsAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,22 @@ namespace projeto_jobs_net.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "vagas",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nome = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
+                    descricao = table.Column<string>(type: "text", nullable: false),
+                    local = table.Column<string>(type: "text", nullable: false),
+                    salario = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_vagas", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "usuarios",
                 columns: table => new
                 {
@@ -36,27 +52,18 @@ namespace projeto_jobs_net.Migrations
                     email = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
                     estadoCivil = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true),
                     possuiVeiculo = table.Column<string>(type: "varchar", nullable: true),
-                    possuiHabilitacao = table.Column<string>(type: "varchar", nullable: true)
+                    possuiHabilitacao = table.Column<string>(type: "varchar", nullable: true),
+                    dado_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_usuarios", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "vagas",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    nome = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    descricao = table.Column<string>(type: "text", nullable: false),
-                    local = table.Column<string>(type: "text", nullable: false),
-                    salario = table.Column<double>(type: "float", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_vagas", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_usuarios_dados_dado_id",
+                        column: x => x.dado_id,
+                        principalTable: "dados",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,13 +95,15 @@ namespace projeto_jobs_net.Migrations
                 name: "IX_enderecos_usuario_id",
                 table: "enderecos",
                 column: "usuario_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_usuarios_dado_id",
+                table: "usuarios",
+                column: "dado_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "dados");
-
             migrationBuilder.DropTable(
                 name: "enderecos");
 
@@ -103,6 +112,9 @@ namespace projeto_jobs_net.Migrations
 
             migrationBuilder.DropTable(
                 name: "usuarios");
+
+            migrationBuilder.DropTable(
+                name: "dados");
         }
     }
 }

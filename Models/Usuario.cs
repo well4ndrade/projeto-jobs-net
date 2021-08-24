@@ -54,6 +54,14 @@ namespace projeto_jobs_net.Models
 
     [Column("possuiHabilitacao", TypeName = "varchar")]
     public string PossuiHabilitacao { get;set; }
+
+    [Column("dado_id")]
+    [Required]
+    [ForeignKey("DadoId")]
+    public int DadoId { get; set; }
+    [JsonIgnore]
+    public Dado Dado { get; set; }
+    
            
   }
 }

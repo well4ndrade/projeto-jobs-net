@@ -111,6 +111,10 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("varchar(15)")
                         .HasColumnName("cpf");
 
+                    b.Property<int>("DadoId")
+                        .HasColumnType("int")
+                        .HasColumnName("dado_id");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -158,6 +162,8 @@ namespace projeto_jobs_net.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DadoId");
+
                     b.ToTable("usuarios");
                 });
 
@@ -203,6 +209,17 @@ namespace projeto_jobs_net.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
+                {
+                    b.HasOne("projeto_jobs_net.Models.Dado", "Dado")
+                        .WithMany()
+                        .HasForeignKey("DadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dado");
                 });
 #pragma warning restore 612, 618
         }

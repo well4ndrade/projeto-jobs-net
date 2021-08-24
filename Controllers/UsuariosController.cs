@@ -28,7 +28,7 @@ namespace projeto_jobs_net.Controllers
 
         [HttpPost]
         [Route("/Usuarios")]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Nascimento,Telefone,Telefone2,Email,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Nome,Cpf,Rg,Nascimento,Telefone,Telefone2,Email,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         {
             _context.Add(usuario);
             await _context.SaveChangesAsync();
