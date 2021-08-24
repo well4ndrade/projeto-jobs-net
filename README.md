@@ -1,16 +1,16 @@
 <h1>Back-End Jobsnet</h1>🚀
 
-<h2> Equipe The First Of Us></h2>🚀🚀
+🚀<h2> Equipe The First Of Us</h2>🚀
 
 
-:pushpin:<h2>Comandos para rodar localmente</h2>	:computer:
+<h2>📌Comandos para rodar localmente 💻</h2>
 <ul>
 <li>Clonar - git clone https://github.com/well4ndrade/projeto-jobs-net</li>
 <li>Para Rodar(porta 5001) - dotnet run</li>
 <li>Testes - dotnet build</li>
 </ul>
 
-:pushpin:<h2>Comandos iniciais:</h2>	:computer:
+<h2>📌Comandos iniciais:  💻</h2>
 <ul>
 <li>mkdir jobs-net</li>
 <li>cd jobs-net</li>
@@ -18,7 +18,7 @@
 </ul>
 
 
-:pushpin:</h2>Comandos git:</h2>	:computer:
+<h2>📌Comandos git: 💻</h2>
 <ul>
 <li>git init</li>
 <li>git add .</li>
@@ -30,7 +30,7 @@
 <li>git push -u origin main</li>
 </ul>
 
-:pushpin:</h2>Componentes Instalados:</h2>	:computer:
+<h2>📌Componentes Instalados: 💻</h2>
 <ul>
 <li>dotnet add package Microsoft.EntityFrameworkCore --version 5.0.2</li>
 <li>dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.2</li>
@@ -38,19 +38,19 @@
 <li>dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.0.2</li>
 </ul>
 
-:pushpin:</h2>Comandos para migração:</h2>	:computer:
+<h2>📌Comandos para migração: 💻</h2>
 <ul>
 <li>dotnet tool install --global dotnet-ef</li>
 <li>dotnet ef migrations add jobsAdd</li>
 <li>dotnet ef database update</li>
 </ul>
 
-:pushpin:</h2>Intalação para Code Generetor:</h2>	:computer:
+<h2>📌Instalação para Code Generetor: 💻</h2>
 <ul>
 dotnet tool install -g dotnet-aspnet-codegenerator</li>
 </ul>
 
-:pushpin:</h2>Gerando o scaffold de Usuarios, Enderços e Vagas:</h2>	:computer:
+<h2>📌Gerando o scaffold de Usuarios, Enderços e Vagas: 💻</h2>
 <ul>
 <li>dotnet aspnet-codegenerator controller -name UsuariosController -m Usuario -dc DbContexto --relativeFolderPath Controllers </li>
 
@@ -59,13 +59,13 @@ dotnet tool install -g dotnet-aspnet-codegenerator</li>
 <li>dotnet aspnet-codegenerator controller -name VagasController -m Vaga -dc DbContexto --relativeFolderPath Controllers </li>
 </ul>
 
-:pushpin:</h2>Erro de certificados que ocorreu foi resolvido: (Executar na API e no MVC)</h2>	:computer:
+<h2>📌Erro de certificados que ocorreu foi resolvido: (Executar na API e no MVC) 💻</h2>
 <ul>
 <li>dotnet dev-certs https --clean</li>
 <li>dotnet dev-certs https --trust</li>
 </ul>
 
-:pushpin:<h2>Tecnologias Utilizadas</h2>	:computer:
+<h2>📌Tecnologias Utilizadas 💻</h2>	
 <ul>
 <li>.NET Entity Framework</li>
 <li> Swagger</li>
