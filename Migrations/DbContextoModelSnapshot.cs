@@ -3,23 +3,46 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projeto_jobs_net.Servicos;
 
 namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210822233424_JobsAdd")]
-    partial class JobsAdd
+    partial class DbContextoModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Dado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("login");
+
+                    b.Property<string>("Passwd")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("passwd");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dados");
+                });
 
             modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
                 {
@@ -72,31 +95,6 @@ namespace projeto_jobs_net.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("enderecos");
-                });
-
-            modelBuilder.Entity("projeto_jobs_net.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("passwd");
-
-                    b.Property<string>("Usuario")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("login");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("login");
                 });
 
             modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>

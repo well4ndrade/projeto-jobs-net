@@ -8,6 +8,20 @@ namespace projeto_jobs_net.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "dados",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    login = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
+                    passwd = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_dados", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "enderecos",
                 columns: table => new
                 {
@@ -24,20 +38,6 @@ namespace projeto_jobs_net.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_enderecos", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "login",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    login = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
-                    passwd = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_login", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +96,7 @@ namespace projeto_jobs_net.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "login");
+                name: "dados");
 
             migrationBuilder.DropTable(
                 name: "usuarios");

@@ -61,8 +61,6 @@ namespace projeto_jobs_net.Controllers
             
         }
 
-
-
         [HttpPut]
         [Route("/Dados/Alterar/")]
          public async Task<IActionResult> Edit([FromBody] AdmLoginView dado)

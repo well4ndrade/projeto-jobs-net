@@ -24,6 +24,13 @@ namespace projeto_jobs_net.Controllers
             return StatusCode(200, await _context.Vagas.ToListAsync());
         }
 
+        [HttpGet]
+        [Route("/Vagas/filtro")]
+        public async Task<IActionResult> Index1()
+        {
+            return StatusCode(200, await _context.Vagas.Take(6).ToListAsync());
+        }
+
         [HttpPost]
         [Route("/Vagas")]
         public async Task<IActionResult> Create([Bind("Id,Nome,descricao,Local,Salario")] Vaga vaga)

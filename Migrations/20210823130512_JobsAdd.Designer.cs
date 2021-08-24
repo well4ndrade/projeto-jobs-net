@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projeto_jobs_net.Servicos;
 
-namespace jobs_net.Migrations
+namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210822150124_dadoAdd")]
-    partial class dadoAdd
+    [Migration("20210823130512_JobsAdd")]
+    partial class JobsAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -187,16 +187,25 @@ namespace jobs_net.Migrations
                         .HasColumnName("id")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("descricao");
+
+                    b.Property<string>("Local")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("local");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
                         .HasColumnName("nome");
 
-                    b.Property<string>("descricao")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("descricao");
+                    b.Property<double>("Salario")
+                        .HasColumnType("float")
+                        .HasColumnName("salario");
 
                     b.HasKey("Id");
 
