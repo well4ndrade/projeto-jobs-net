@@ -10,7 +10,7 @@ using projeto_jobs_net.Servicos;
 namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210823130512_JobsAdd")]
+    [Migration("20210824055110_JobsAdd")]
     partial class JobsAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

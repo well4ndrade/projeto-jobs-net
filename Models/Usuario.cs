@@ -8,6 +8,7 @@ namespace projeto_jobs_net.Models
   [Table("usuarios")]
   public class Usuario
   {
+    
     [Key]
     [Column("id")]
     public int Id { get;set; }
@@ -16,12 +17,12 @@ namespace projeto_jobs_net.Models
     [Required]
     [MaxLength(150)]
     public string Nome { get;set; }
-    
+
     [Column("cpf", TypeName = "varchar")]
     [Required]
     [MaxLength(15)]
     public string Cpf { get;set; }
-
+    
     [Column("rg", TypeName = "varchar")]
     [Required]
     [MaxLength(15)]

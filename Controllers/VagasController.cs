@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using projeto_jobs_net.ModelViews;
 using projeto_jobs_net.Models;
 using projeto_jobs_net.Servicos;
 
@@ -22,6 +23,26 @@ namespace projeto_jobs_net.Controllers
         public async Task<IActionResult> Index()
         {
             return StatusCode(200, await _context.Vagas.ToListAsync());
+        }
+
+        [HttpPost]
+        [Route("/Vagas/buscar")] 
+        public async Task<IActionResult> Nome([FromBody] AdmVagaView vaga)
+        {
+            var buscar = await _context.Vagas.Where(a => a.Nome == vaga.Nome).FirstOrDefaultAsync();
+            if (buscar != null) 
+            {
+                return StatusCode(200, new{
+                    Id = buscar.Id,
+                    Nome = buscar.Nome,
+                    Descricao = buscar.Descricao,
+                    Local = buscar.Local,
+                    Salario = buscar.Salario,  
+                });
+            }
+            return StatusCode(401, new {
+                Mensagem = "Não encontrado",
+            });
         }
 
         [HttpGet]
