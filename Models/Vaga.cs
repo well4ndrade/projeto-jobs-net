@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,10 +7,11 @@ namespace projeto_jobs_net.Models
   [Table("vagas")]
   public class Vaga
   {
+
     [Key]
     [Column("id")]
     public int Id { get;set; }
-
+    
     [Column("nome", TypeName = "varchar")]
     [MaxLength(150)]
     [Required]

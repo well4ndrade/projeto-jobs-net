@@ -11,48 +11,48 @@ using projeto_jobs_net.Servicos;
 namespace projeto_jobs_net.Controllers
 {
     [ApiController]
-    public class EnderecosController : ControllerBase
+    public class CurriculosController : ControllerBase
     {
         private readonly DbContexto _context;
 
-        public EnderecosController(DbContexto context)
+        public CurriculosController(DbContexto context)
         {
             _context = context;
         }
 
         [HttpGet]
-        [Route("/Enderecos")]
+        [Route("/Curriculos")]
         public async Task<IActionResult> Index()
         {
-            return StatusCode(200, await _context.Enderecos.ToListAsync());
+            return StatusCode(200, await _context.Curriculos.ToListAsync());
         }
 
         [HttpPost]
-        [Route("/Enderecos")]
-        public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade")] Endereco endereco)
+
+        [Route("/Curriculos")]
+        public async Task<IActionResult> Create([Bind("Id,Nome,Cargo,Sobre,Escolaridade")] Curriculo curriculo)
         {
-            
-            _context.Add(endereco);
+            _context.Add(curriculo);
             await _context.SaveChangesAsync();
-            return StatusCode(201, endereco);
+            return StatusCode(201, curriculo);
         }
 
         [HttpPut]
-        [Route("/Enderecos/{id}")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade")] Endereco endereco)
+        [Route("/Curriculos/{id}")]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cargo,Sobre,Escolaridade")] Curriculo curriculo)
         {
-            if (id != endereco.Id)
+            if (id != curriculo.Id)
             {
                 return NotFound();
             }
             try
             {
-                _context.Update(endereco);
+                _context.Update(curriculo);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EnderecoExists(endereco.Id))
+                if (!CurriculoExists(curriculo.Id))
                 {
                     return NotFound();
                 }
@@ -61,25 +61,22 @@ namespace projeto_jobs_net.Controllers
                     throw;
                 }
             }
-            return StatusCode(200, endereco);
+            return StatusCode(200, curriculo);
         }
 
         [HttpDelete]
-        [Route("/Enderecos/{id}")]
+        [Route("/Curriculos/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var endereco = await _context.Enderecos.FindAsync(id);
-            _context.Enderecos.Remove(endereco);
+            var curriculo = await _context.Curriculos.FindAsync(id);
+            _context.Curriculos.Remove(curriculo);
             await _context.SaveChangesAsync();
             return StatusCode(204);
         }
 
-        private bool EnderecoExists(int id)
+        private bool CurriculoExists(int id)
         {
-            return _context.Enderecos.Any(e => e.Id == id);
+            return _context.Curriculos.Any(e => e.Id == id);
         }
-
     }
 }
-
-

@@ -11,6 +11,7 @@ namespace projeto_jobs_net.Servicos
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Vaga> Vagas { get; set; }
     public DbSet<Dado> Dados { get; set; }
+    public DbSet<Curriculo> Curriculos { get; set; }
     
   }
 }

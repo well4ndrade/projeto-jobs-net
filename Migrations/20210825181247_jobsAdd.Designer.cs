@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projeto_jobs_net.Servicos;
 
 namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    partial class DbContextoModelSnapshot : ModelSnapshot
+    [Migration("20210825181247_jobsAdd")]
+    partial class jobsAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,15 +125,6 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("int")
                         .HasColumnName("numero");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
-                        .HasColumnName("usuario_id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-
                     b.Property<string>("Pais")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -157,18 +150,11 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("varchar(15)")
                         .HasColumnName("cpf");
 
-
-                    b.Property<int>("DadoId")
-                        .HasColumnType("int")
-                        .HasColumnName("dado_id");
-
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
                         .HasColumnName("email");
-
 
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int")
@@ -178,7 +164,6 @@ namespace projeto_jobs_net.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
                         .HasColumnName("estadoCivil");
-
 
                     b.Property<string>("Genero")
                         .HasMaxLength(15)
@@ -203,7 +188,6 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("possuiVeiculo");
 
-
                     b.Property<string>("Profissao")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)")
@@ -226,9 +210,6 @@ namespace projeto_jobs_net.Migrations
                         .HasColumnName("telefone2");
 
                     b.HasKey("Id");
-
-
-                    b.HasIndex("DadoId");
 
                     b.HasIndex("EnderecoId");
 
@@ -268,27 +249,6 @@ namespace projeto_jobs_net.Migrations
                     b.ToTable("vagas");
                 });
 
-            modelBuilder.Entity("projeto_jobs_net.Models.Endereco", b =>
-                {
-                    b.HasOne("projeto_jobs_net.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
-                {
-                    b.HasOne("projeto_jobs_net.Models.Dado", "Dado")
-                        .WithMany()
-                        .HasForeignKey("DadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dado");
-                    
             modelBuilder.Entity("projeto_jobs_net.Models.Usuario", b =>
                 {
                     b.HasOne("projeto_jobs_net.Models.Endereco", "Endereco")

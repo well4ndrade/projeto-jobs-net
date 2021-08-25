@@ -18,6 +18,7 @@ namespace projeto_jobs_net.Apresentacao
                 "/Vagas",
                 "/swagger",
                 "http://localhost:3000/portal/cadastro/"
+                "/Curriculos"
             };
             }
         }
