@@ -55,10 +55,13 @@ namespace projeto_jobs_net.Controllers
         [HttpPost]
         [Route("/Vagas")]
         public async Task<IActionResult> Create([Bind("Id,Nome,descricao,Local,Salario")] Vaga vaga)
-        {
+        {   
+            if(!(VagaJaCadastrada(vaga.Nome))){
             _context.Add(vaga);
             await _context.SaveChangesAsync();
             return StatusCode(201, vaga);
+            }
+            return StatusCode(401, new { Mensagem = "Essa vaga já esta cadastrada no banco" });
         }
 
         [HttpPut]
@@ -102,6 +105,11 @@ namespace projeto_jobs_net.Controllers
         private bool VagaExists(int id)
         {
             return _context.Vagas.Any(e => e.Id == id);
+        }
+
+        private bool VagaJaCadastrada(string Nome)
+        {
+            return _context.Vagas.Any(e => e.Nome == Nome);
         }
     }
 }

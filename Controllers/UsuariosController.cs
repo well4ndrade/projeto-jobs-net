@@ -28,16 +28,19 @@ namespace projeto_jobs_net.Controllers
 
         [HttpPost]
         [Route("/Usuarios")]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Nome,Cpf,Rg,Nascimento,Telefone,Telefone2,Email,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
         {
+            if(!(CpfExists(usuario.Cpf))){
             _context.Add(usuario);
             await _context.SaveChangesAsync();
             return StatusCode(201, usuario);
+            }
+             return StatusCode(401, new { Mensagem = "O CPF já esta cadastrado" });
         }
 
         [HttpPut]
         [Route("/Usuarios/{id}")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Genero,Nascimento,Telefone,Telefone2,Email,Profissao,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Rg,Nascimento,Telefone,Telefone2,Email,EstadoCivil,PossuiVeiculo,PossuiHabilitacao")] Usuario usuario)
 
         {
             if (id != usuario.Id)
@@ -76,6 +79,11 @@ namespace projeto_jobs_net.Controllers
         private bool UsuarioExists(int id)
         {
             return _context.Usuarios.Any(e => e.Id == id);
+        }
+
+        private bool CpfExists(string Cpf)
+        {
+            return _context.Usuarios.Any(e => e.Cpf == Cpf);
         }
     }
 }

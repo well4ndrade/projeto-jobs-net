@@ -29,8 +29,9 @@ namespace projeto_jobs_net.Controllers
 
         [HttpPost]
         [Route("/Enderecos")]
-        public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
+        public async Task<IActionResult> Create([Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade")] Endereco endereco)
         {
+            
             _context.Add(endereco);
             await _context.SaveChangesAsync();
             return StatusCode(201, endereco);
@@ -38,7 +39,7 @@ namespace projeto_jobs_net.Controllers
 
         [HttpPut]
         [Route("/Enderecos/{id}")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade,Pais")] Endereco endereco)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Cep,Logradouro,Numero,Bairro,Cidade")] Endereco endereco)
         {
             if (id != endereco.Id)
             {
@@ -77,5 +78,8 @@ namespace projeto_jobs_net.Controllers
         {
             return _context.Enderecos.Any(e => e.Id == id);
         }
+
     }
 }
+
+
