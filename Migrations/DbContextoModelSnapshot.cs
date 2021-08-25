@@ -19,6 +19,43 @@ namespace projeto_jobs_net.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
+            modelBuilder.Entity("projeto_jobs_net.Models.Curriculo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("text")
+                        .HasColumnName("cargo");
+
+                    b.Property<string>("Escolaridade")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("escolaridade");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("text")
+                        .HasColumnName("nome");
+
+                    b.Property<string>("Sobre")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("text")
+                        .HasColumnName("sobre");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("curriculos");
+                });
+
             modelBuilder.Entity("projeto_jobs_net.Models.Dado", b =>
                 {
                     b.Property<int>("Id")

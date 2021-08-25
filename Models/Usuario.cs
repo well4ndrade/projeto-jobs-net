@@ -67,6 +67,7 @@ namespace projeto_jobs_net.Models
     [Required]
     [ForeignKey("EnderecoId")]
     public int EnderecoId { get; set; }
+    
     [JsonIgnore]
     public Endereco Endereco { get; set; }
   }

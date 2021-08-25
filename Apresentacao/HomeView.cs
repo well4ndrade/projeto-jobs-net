@@ -16,6 +16,7 @@ namespace projeto_jobs_net.Apresentacao
                 "/Enderecos",
                 "/Usuarios",
                 "/Vagas",
+                "/Curriculos",
                 "/swagger"
             };
             }

@@ -50,7 +50,7 @@
 dotnet tool install -g dotnet-aspnet-codegenerator</li>
 </ul>
 
-<h2>📌Gerando o scaffold de Usuarios, Enderços e Vagas: 💻</h2>
+<h2>📌Gerando o scaffold de Usuarios, Enderços e Vagas (o processo foi repetido para todos os controllers): 💻</h2>
 <ul>
 <li>dotnet aspnet-codegenerator controller -name UsuariosController -m Usuario -dc DbContexto --relativeFolderPath Controllers </li>
 

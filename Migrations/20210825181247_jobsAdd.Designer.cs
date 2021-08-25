@@ -10,8 +10,8 @@ using projeto_jobs_net.Servicos;
 namespace projeto_jobs_net.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210824055110_JobsAdd")]
-    partial class JobsAdd
+    [Migration("20210825181247_jobsAdd")]
+    partial class jobsAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,43 @@ namespace projeto_jobs_net.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
+
+            modelBuilder.Entity("projeto_jobs_net.Models.Curriculo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("text")
+                        .HasColumnName("cargo");
+
+                    b.Property<string>("Escolaridade")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("escolaridade");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("text")
+                        .HasColumnName("nome");
+
+                    b.Property<string>("Sobre")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("text")
+                        .HasColumnName("sobre");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("curriculos");
+                });
 
             modelBuilder.Entity("projeto_jobs_net.Models.Dado", b =>
                 {

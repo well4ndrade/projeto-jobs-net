@@ -3,10 +3,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace projeto_jobs_net.Migrations
 {
-    public partial class JobsAdd : Migration
+    public partial class jobsAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "curriculos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nome = table.Column<string>(type: "text", maxLength: 150, nullable: false),
+                    cargo = table.Column<string>(type: "text", maxLength: 150, nullable: false),
+                    sobre = table.Column<string>(type: "text", maxLength: 150, nullable: false),
+                    escolaridade = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_curriculos", x => x.id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "dados",
                 columns: table => new
@@ -95,6 +111,9 @@ namespace projeto_jobs_net.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "curriculos");
+
             migrationBuilder.DropTable(
                 name: "dados");
 
