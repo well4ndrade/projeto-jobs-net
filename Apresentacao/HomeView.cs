@@ -16,7 +16,8 @@ namespace projeto_jobs_net.Apresentacao
                 "/Enderecos",
                 "/Usuarios",
                 "/Vagas",
-                "/swagger"
+                "/swagger",
+                "http://localhost:3000/portal/cadastro/"
             };
             }
         }
