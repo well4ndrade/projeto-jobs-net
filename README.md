@@ -59,12 +59,6 @@ dotnet tool install -g dotnet-aspnet-codegenerator</li>
 <li>dotnet aspnet-codegenerator controller -name VagasController -m Vaga -dc DbContexto --relativeFolderPath Controllers </li>
 </ul>
 
-<h2>📌Erro de certificados que ocorreu foi resolvido: (Executar na API e no MVC) 💻</h2>
-<ul>
-<li>dotnet dev-certs https --clean</li>
-<li>dotnet dev-certs https --trust</li>
-</ul>
-
 <h2>📌Tecnologias Utilizadas 💻</h2>	
 <ul>
 <li>.NET Entity Framework</li>
